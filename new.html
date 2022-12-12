@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title></title>
+    <title>Nueva Página</title>
     <meta charset="UTF-8">
+    <style type="text/css">
+      textarea {
+        resize: none
+      }
+      body {
+        background-color: lightcyan;
+      }
+    </style>
   </head>
-
   <body>
+    <form actions="" method="GET">
+      <div>
+        <label for="titulo">Título</label>
+        <input type="text" name="nombre">
+      </div>
+      <div>
+        <label for="texto">Texto</label>
+        <textarea name="texto"rows="25" cols="60">Aqui ingresamos el texto a convertir...</textarea>
+      </div>
+      <input type="submit" value="Enviar">
+    </form>
+    <a href="index.html">Cancelar</a>
   </body>
 </html>
 
