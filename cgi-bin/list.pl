@@ -17,8 +17,11 @@ $sth->execute();
 print "<h1>Listado</h1>\n";
 #my @lista;
 while(my @row = $sth->fetchrow_array){
+
+  my $titulo = $row[0];
   print "<li><a href='view.pl'>$row[0]</a>
   <form action='edit.pl' method='GET'>
+  <label name ='$titulo'>
   <input type='submit' value='E'>
   </form>
   <form action='delete.pl' method='GET'>
