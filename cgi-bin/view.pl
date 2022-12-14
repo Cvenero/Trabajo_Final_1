@@ -10,16 +10,15 @@ my $password='pweb1';
 my $dsn = "DBI:MariaDB:database=pweb1;host=192.168.1.9";
 my $dbh = DBI->connect($dsn,$user,$password) or die("No se pudo conectar!");;
 #view.pl
-my $titulo = 'Titulo1';
-
-#my $titulo = $q->param('');
+#my $titulo = 'Titulo4';
+my $tt= $q->param('fn');
 print $q->header('text/html');
 my $sth = $dbh->prepare("SELECT Text FROM Wiki WHERE Title=?");
 
-$sth->execute($titulo);
-print "<a href='list.pl'>Regresar<a/>";
+$sth->execute($tt);
+print "<a href='list.pl'>Regresar al listado</a>";
 if(my @row = $sth->fetchrow_array){
-  print "<h1>$titulo</h1>";
+  print "<h1>Titulo:$tt</h1>";
   print "<p>@row</p>\n";
 }
   $sth->finish;
@@ -29,7 +28,7 @@ print <<BLOCK
 <!DOCTYPE html>
 <html>
 <head>
-<title> Listado </title>
+<title> Lista </title>
 </head>
 <body>
 </body>

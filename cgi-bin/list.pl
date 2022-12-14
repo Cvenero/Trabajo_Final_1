@@ -17,9 +17,9 @@ $sth->execute();
 print "<h1>Listado</h1>\n";
 #my @lista;
 while(my @row = $sth->fetchrow_array){
-
   my $E = $row[0];
-  print "<li><a href='view.pl'>$row[0]</a></li>
+  print "
+  <li><a href='192.168.1.9/~alumno/wiki/cgi-bin/view.pl?fn=$row[0]'>$row[0]</a></li>
   <form action='delete.pl' method='GET'>
   <input type='submit' value='X'>
   </form>
