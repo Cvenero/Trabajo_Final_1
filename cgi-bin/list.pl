@@ -17,13 +17,17 @@ $sth->execute();
 print "<h1>Listado</h1>\n";
 #my @lista;
 while(my @row = $sth->fetchrow_array){
-  #my $titulo = $row[0];
-  print "<li><a href='view.pl'>$row[0]</a>";
-  print "<a href='edit.pl' class = 'botone'>\tE</a>"; #EditarPagina
-  print "<a href='delete.pl'>\tX</a>"; #BorrarPagina
-  print "\n</li>";
-  # push(@lista, $title);
-  # print @lista;
+  print "<li><a href='view.pl'>$row[0]</a>
+  <form action='edit.pl' method='GET'>
+  <input type='submit' value='E'>
+  <form action='delete.pl' method='GET'>
+  <input type='submit' value='X'>
+  </form></li>";
+
+
+  # print "<a href='edit.pl' class = 'botone'>\tE</a>"; #EditarPagina
+  #print "<a href='delete.pl'>\tX</a>"; #BorrarPagina
+  #print "\n</li>";
 }
   $sth->finish;
   $dbh->disconnect;
@@ -33,12 +37,6 @@ print <<BLOCK
 <html>
 <head>
 <title> Listado </title>
-<style type="text/css>"
-.botone{
-  background-color: #199319;
-  color: black;
-  }
-</style>
 </head>
 <body>
 </body>
