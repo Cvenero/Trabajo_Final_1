@@ -20,6 +20,7 @@ while(my @row = $sth->fetchrow_array){
   print "<li><a href='view.pl'>$row[0]</a>
   <form action='edit.pl' method='GET'>
   <input type='submit' value='E'>
+  </form>
   <form action='delete.pl' method='GET'>
   <input type='submit' value='X'>
   </form></li>";
