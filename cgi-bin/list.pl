@@ -18,20 +18,15 @@ print "<h1>Listado</h1>\n";
 #my @lista;
 while(my @row = $sth->fetchrow_array){
 
-  my $titulo = $row[0];
-  print "<li><a href='view.pl'>$row[0]</a>
-  <form action='edit.pl' method='GET'>
-  <label name ='$titulo'>
-  <input type='submit' value='E'>
-  </form>
+  my $E = $row[0];
+  print "<li><a href='view.pl'>$row[0]</a></li>
   <form action='delete.pl' method='GET'>
   <input type='submit' value='X'>
-  </form></li>";
-
-
-  # print "<a href='edit.pl' class = 'botone'>\tE</a>"; #EditarPagina
-  #print "<a href='delete.pl'>\tX</a>"; #BorrarPagina
-  #print "\n</li>";
+  </form>
+  <form action='edit.pl' method='GET'>
+  <input type='hidden' name='fn' value=$E>
+  <input type='submit' value='E'>
+  </form>";
 }
   $sth->finish;
   $dbh->disconnect;
