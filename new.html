@@ -13,15 +13,15 @@
     </style>
   </head>
   <body>
-    <form actions="" method="GET">
-      <div>
-        <label for="titulo">Título</label>
-        <input type="text" name="nombre">
-      </div>
-      <div>
-        <label for="texto">Texto</label>
-        <textarea name="texto"rows="25" cols="60">Aqui ingresamos el texto a convertir...</textarea>
-      </div>
+    <form action="cgi-bin/new.pl" method="GET">
+      <!-- <div>-->
+        <label for='title'>Título</label>
+        <input type="text" name='title'>
+        <!--</div>-->
+        <!--<div>-->
+        <label for='text'>Texto</label>
+        <textarea name='text'rows="25" cols="60"></textarea>
+        <!--</div>-->
       <input type="submit" value="Enviar">
     </form>
     <a href="index.html">Cancelar</a>

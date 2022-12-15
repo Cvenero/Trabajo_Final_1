@@ -31,7 +31,10 @@ while(my @row = $sth->fetchrow_array){
   <input type='submit' value='E'>
   </form>";
 }
-  print "<li><a href='new.pl'>Nueva Pagina</a></li>";
+  print "<form action='../new.html' method='GET'>
+  <input type='submit' value='Nueva Pagina'>
+  </form>";
+  print "<a href='../index.html'>Volver al inicio</a>";
   $sth->finish;
   $dbh->disconnect;
 
