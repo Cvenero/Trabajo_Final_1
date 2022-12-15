@@ -14,13 +14,25 @@ my $dbh = DBI->connect($dsn,$user,$password) or die("No se pudo conectar!");;
 my $tt= $q->param('fn');
 print $q->header('text/html');
 my $sth = $dbh->prepare("SELECT Text FROM Wiki WHERE Title=?");
+##my $sth = $dbh->prepare("UPDATE Wiki SET Text=? WHERE Title=?");
 
 $sth->execute($tt);
-print "<a href='list.pl'>Regresar al listado</a>";
-if(my @row = $sth->fetchrow_array){
-  print "<h1>Titulo:</h1>";
-  print "<p>@row</p>\n";
-}
+
+my @row = ($sth->fetchrow_array);
+my $txt = $row[0];
+print "<h1>$tt</h1>";
+print "<form action='new.pl' method='GET'>
+<div>
+<label for='text'>Texto</label>
+<textarea name='text'rows='25' cols='60'>@row</textarea>
+</div>
+<input type='submit' value='Enviar'>
+</form>
+<a href='../index.html'>Cancelar</a>";
+#my $sth = $dbh->prepare("SELECT Text FROM Wiki WHERE Title=?");
+#my $sth = $dbh->prepare("UPDATE Wiki SET Text=? WHERE Title=?");
+
+#$sth->execute($txt, $tt);
   $sth->finish;
   $dbh->disconnect;
 

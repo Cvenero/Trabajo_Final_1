@@ -17,7 +17,7 @@ my $sth = $dbh->prepare("INSERT INTO Wiki(Title, Text) VALUES(?,?)");
 $sth->execute($titulo_insertar,$texto_insertar);
 print "<h1>$titulo_insertar</h1>";
 print "<p>$texto_insertar</p>";
-print "<br>";
+print "<hr>";
 print "<h2>Pagina grabada <a href='list.pl'>Listado de Paginas</a></h2>";
 
 $sth->finish;
