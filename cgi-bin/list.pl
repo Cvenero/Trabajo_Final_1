@@ -20,14 +20,18 @@ while(my @row = $sth->fetchrow_array){
   my $E = $row[0];
   print "
   <li><a href='/~alumno/wiki/cgi-bin/view.pl?fn=$row[0]'>$row[0]</a></li>
+
   <form action='delete.pl' method='GET'>
+  <input type='hidden' name='fn' value=$E>
   <input type='submit' value='X'>
   </form>
+  
   <form action='edit.pl' method='GET'>
   <input type='hidden' name='fn' value=$E>
   <input type='submit' value='E'>
   </form>";
 }
+  print "<li><a href='new.pl'>Nueva Pagina</a></li>";
   $sth->finish;
   $dbh->disconnect;
 
