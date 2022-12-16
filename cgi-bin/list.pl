@@ -10,12 +10,10 @@ my $password='pweb1';
 my $dsn = "DBI:MariaDB:database=pweb1;host=192.168.1.9";
 my $dbh = DBI->connect($dsn,$user,$password) or die("No se pudo conectar!");;
 #list.pl
-#my $titulo = $q->param("Title");
 print $q->header('text/html');
 my $sth = $dbh->prepare("SELECT Title FROM Wiki");
 $sth->execute();
 print "<h1>Listado</h1>\n";
-#my @lista;
 while(my @row = $sth->fetchrow_array){
   my $E = $row[0];
   print "
@@ -37,7 +35,7 @@ while(my @row = $sth->fetchrow_array){
   print "<a href='../index.html'>Volver al inicio</a>";
   $sth->finish;
   $dbh->disconnect;
-
+  
 print <<BLOCK
 <!DOCTYPE html>
 <html>

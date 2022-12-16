@@ -18,10 +18,21 @@ my $sth = $dbh->prepare("SELECT Text FROM Wiki WHERE Title=?");
 $sth->execute($tt);
 print "<a href='list.pl'>Regresar al listado</a>";
 #EXPRESIONES REGULARES PARA TRADUCIR A HTML
-print "<h2>Aqui se muestra el mensaje ya traducido</h2>";
 if(my @row = $sth->fetchrow_array){
+  my $txt = $row[0];
   print "<h1>$tt</h1>";
-  print "<p>@row</p>\n";
+  if($txt =~ /^\#{1}\s.*/){
+    print "<h1>$txt</h1>";
+  }
+  if($txt =~/^\#{2}\s.*/){
+    print "<h2>$txt</h2>";
+  }
+  if($txt =~/^\#{6}\s.*/){
+    print "<h6>$txt</h6>";
+  }
+  else{
+    print "<p>@row</p>\n";
+  }
 }
   $sth->finish;
   $dbh->disconnect;

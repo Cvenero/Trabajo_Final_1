@@ -15,6 +15,7 @@ print $q->header('text/html');
 my $sth = $dbh->prepare("DELETE FROM Wiki WHERE Title=?");
 
 $sth->execute($titulo_borrar);
+print "$titulo_borrar";
 print "<p>Borrado con exito<p>";
 print "<a href='list.pl'>Regresar al listado</a>";
   $sth->finish;
